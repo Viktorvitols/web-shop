@@ -17,13 +17,13 @@ public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void storeUser(Registration reg) {
-        jdbcTemplate.update("INSERT INTO users (username, password) VALUES (?, ?)",
-                reg.getUsername(), reg.getPassword());
+    public void storeUser(Registration reg) throws NullPointerException {
+        jdbcTemplate.update("INSERT INTO users (username, password, first_name, last_name, email, phone, birth_date, city_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                reg.getUsername(), reg.getPassword(), reg.getFirstName(), reg.getLastName(), reg.getEmail(), reg.getPhone(), reg.getBirthDate(), reg.getCityId());
     }
 
     public List<User> getUsers() {
-        RowMapper<User> rowMapper = (resultSet, rowNumber) ->mapUser(resultSet); //Lambda
+        RowMapper<User> rowMapper = (resultSet, rowNumber) -> mapUser(resultSet); //Lambda
         return jdbcTemplate.query("SELECT * FROM users", rowMapper);
     }
 
