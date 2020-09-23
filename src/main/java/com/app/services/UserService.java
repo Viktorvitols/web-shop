@@ -1,8 +1,10 @@
 package com.app.services;
 
 import com.app.dao.UserDao;
+import com.app.model.Login;
 import com.app.model.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,5 +19,9 @@ public class UserService {
 
     public void storeUser(Registration reg) {
         userDao.storeUser(reg);
+    }
+
+    public SqlRowSet login(Login login) {
+        return userDao.login(login);
     }
 }

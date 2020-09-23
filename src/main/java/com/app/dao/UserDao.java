@@ -1,10 +1,12 @@
 package com.app.dao;
 
+import com.app.model.Login;
 import com.app.model.Registration;
 import com.app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -20,6 +22,11 @@ public class UserDao {
     public void storeUser(Registration reg) throws NullPointerException {
         jdbcTemplate.update("INSERT INTO users (username, password, first_name, last_name, email, phone, birth_date, city_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 reg.getUsername(), reg.getPassword(), reg.getFirstName(), reg.getLastName(), reg.getEmail(), reg.getPhone(), reg.getBirthDate(), reg.getCityId());
+    }
+
+    public SqlRowSet login(Login login) throws NullPointerException {
+        return jdbcTemplate.queryForRowSet("SELECT (id) FROM users WHERE username = ? AND password = ?",
+                login.getUsername(), login.getPassword());
     }
 
     public List<User> getUsers() {
