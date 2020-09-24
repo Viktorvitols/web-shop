@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
 public class UserService {
 
@@ -21,7 +23,7 @@ public class UserService {
         userDao.storeUser(reg);
     }
 
-    public SqlRowSet login(Login login) {
-        return userDao.login(login);
+    public int login(Login login) throws SQLException {
+        return userDao.login(login).get(0).getId();
     }
 }
