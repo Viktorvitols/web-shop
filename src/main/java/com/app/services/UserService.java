@@ -23,7 +23,4 @@ public class UserService {
         userDao.storeUser(reg);
     }
 
-    public int login(Login login) throws SQLException {
-        return userDao.login(login).get(0).getId();
-    }
 }
