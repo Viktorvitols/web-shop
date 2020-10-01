@@ -22,6 +22,22 @@ public class User {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -46,14 +62,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -62,15 +70,7 @@ public class User {
         this.phone = phone;
     }
 
-    public String getUsername(String username) {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Date getBirthDate(String birth_date) {
+    public Date getBirthDate() {
         return birthDate;
     }
 
@@ -78,7 +78,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public int getCityId(String city_id) {
+    public int getCityId() {
         return cityId;
     }
 
@@ -86,7 +86,7 @@ public class User {
         this.cityId = cityId;
     }
 
-    public String getCardNr(String card_nr) {
+    public String getCardNr() {
         return cardNr;
     }
 
@@ -94,3 +94,4 @@ public class User {
         this.cardNr = cardNr;
     }
 }
+

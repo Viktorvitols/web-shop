@@ -1,6 +1,5 @@
 package com.app.dao;
 
-import com.app.model.Login;
 import com.app.model.Registration;
 import com.app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class UserDao {
         return jdbcTemplate.query("SELECT * FROM users", rowMapper);
     }
 
-    public List< User> getUserByUsername(String username) {
+    public List<User> getUserByUsername(String username) {
         RowMapper<User> rowMapper = (resultSet, rowNumber) -> mapUser(resultSet);
         return jdbcTemplate.query("SELECT * FROM users WHERE username = ?", rowMapper, username);
     }
@@ -50,18 +49,18 @@ public class UserDao {
         return user;
     }
 
-    public int login(Login login) throws SQLException {
-        RowMapper<Login> rowMapper = (resultSet, rowNumber) -> mapLogin (resultSet);
-        List<Login> loginCheck = jdbcTemplate.query("SELECT id FROM users WHERE username = '" + login.getUsername() + "' AND password = '" + login.getPassword() + "'", rowMapper);
+//    public int login(Login login) throws SQLException {
+//        RowMapper<Login> rowMapper = (resultSet, rowNumber) -> mapLogin (resultSet);
+//        List<Login> loginCheck = jdbcTemplate.query("SELECT id FROM users WHERE username = '" + login.getUsername() + "' AND password = '" + login.getPassword() + "'", rowMapper);
+//
+//        return 0;
+//    }
 
-        return 0;
-    }
-
-    private Login mapLogin (ResultSet resultSet) throws SQLException {
-        Login login = new Login();
-
-        login.setPassword(resultSet.getString("password"));
-        login.setUsername(resultSet.getString("username"));
-        return login;
-    }
+//    private Login mapLogin (ResultSet resultSet) throws SQLException {
+//        Login login = new Login();
+//
+//        login.setPassword(resultSet.getString("password"));
+//        login.setUsername(resultSet.getString("username"));
+//        return login;
+//    }
 }

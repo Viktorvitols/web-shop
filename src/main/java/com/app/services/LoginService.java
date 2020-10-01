@@ -11,8 +11,10 @@ import java.sql.SQLException;
 public class LoginService {
 
     @Autowired
-    private UserDao userDao;
+    UserDao userDao;
+
     public int getUserId(Login login) throws SQLException {
-        return userDao.login(login);
+        String username = login.getUsername();
+        return userDao.getUserByUsername(username).get(0).getId();
     }
 }

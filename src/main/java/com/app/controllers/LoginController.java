@@ -1,7 +1,7 @@
 package com.app.controllers;
 
 import com.app.model.Login;
-import com.app.services.UserService;
+import com.app.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class LoginController {
 
     @Autowired
-    UserService userService;
+    LoginService loginService;
 
     @GetMapping("/login")
     public String getLoginForm(Model model) {
@@ -25,8 +25,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginUser(@ModelAttribute Login login, Model model) throws SQLException {
-        model.addAttribute("loginData", login);
-        
+        model.addAttribute("id", loginService.getUserId(login));
         return "login_response";
     }
 }
