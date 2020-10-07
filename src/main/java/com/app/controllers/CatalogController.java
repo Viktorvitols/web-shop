@@ -20,5 +20,6 @@ public class CatalogController {
         model.addAttribute("price", catalogService.getProductPriceByName(productName));
         model.addAttribute("name", productName);
         return "catalog";
+
     }
 }
