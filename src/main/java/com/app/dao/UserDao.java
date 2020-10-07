@@ -48,19 +48,4 @@ public class UserDao {
 
         return user;
     }
-
-//    public int login(Login login) throws SQLException {
-//        RowMapper<Login> rowMapper = (resultSet, rowNumber) -> mapLogin (resultSet);
-//        List<Login> loginCheck = jdbcTemplate.query("SELECT id FROM users WHERE username = '" + login.getUsername() + "' AND password = '" + login.getPassword() + "'", rowMapper);
-//
-//        return 0;
-//    }
-
-//    private Login mapLogin (ResultSet resultSet) throws SQLException {
-//        Login login = new Login();
-//
-//        login.setPassword(resultSet.getString("password"));
-//        login.setUsername(resultSet.getString("username"));
-//        return login;
-//    }
 }

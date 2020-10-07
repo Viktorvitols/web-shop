@@ -19,13 +19,17 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLoginForm(Model model) {
-        model.addAttribute("loginObject", new Login());
+        model.addAttribute("login", new Login());
         return "login";
     }
 
     @PostMapping("/login")
     public String loginUser(@ModelAttribute Login login, Model model) throws SQLException {
-        model.addAttribute("id", loginService.getUserId(login));
-        return "login_response";
+        Integer userId = loginService.getUserId(login);
+        if (userId != null) {
+            model.addAttribute("id", userId);
+            return "login_response";
+        }
+        return "login";
     }
 }
