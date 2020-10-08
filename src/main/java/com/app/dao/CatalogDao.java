@@ -21,6 +21,11 @@ public class CatalogDao {
         return jdbcTemplate.query("SELECT * FROM catalog WHERE name = ?", rowMapper, name);
     }
 
+    public List<Catalog> getItemFromCatalog() {
+        RowMapper<Catalog> rowMapper = (resultSet, rowBumber) -> mapCatalog(resultSet);
+        return jdbcTemplate.query("SELECT * FROM catalog", rowMapper);
+    }
+
     public Catalog mapCatalog(ResultSet resultSet) throws SQLException {
         Catalog catalog = new Catalog();
 

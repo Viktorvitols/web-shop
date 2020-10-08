@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class CatalogController {
@@ -14,11 +15,9 @@ public class CatalogController {
     private CatalogService catalogService;
 
     @GetMapping("/catalog")
-    public String getCatalog(Model model) {
-//        model.addAttribute("catalog" , new Catalog());
-        String productName = "Svetlana";
-        model.addAttribute("price", catalogService.getProductPriceByName(productName));
-        model.addAttribute("name", productName);
+    public String getCatalog(@ModelAttribute Catalog catalog, Model model) {
+        model.addAttribute("item" , new Catalog());
+        catalogService.getItem();
         return "catalog";
 
     }
