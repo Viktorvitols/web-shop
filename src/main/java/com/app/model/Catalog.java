@@ -8,6 +8,8 @@ public class Catalog {
     private Integer manufacturerId;
     private String description;
     private Double price;
+    private String subcategoryName;
+    private String categoryName;
 
     public Integer getId() {
         return id;
@@ -55,5 +57,21 @@ public class Catalog {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getSubcategoryName() {
+        return subcategoryName;
+    }
+
+    public void setSubcategoryName(String subcategoryName) {
+        this.subcategoryName = subcategoryName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

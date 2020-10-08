@@ -15,9 +15,9 @@ public class CatalogController {
     private CatalogService catalogService;
 
     @GetMapping("/catalog")
-    public String getCatalog(@ModelAttribute Catalog catalog, Model model) {
-        model.addAttribute("item" , new Catalog());
-        catalogService.getItem();
+    public String getItem(@ModelAttribute Catalog catalog, Model model) {
+        model.addAttribute("catalog" , catalog);
+        catalogService.getItemFromCatalog();
         return "catalog";
 
     }

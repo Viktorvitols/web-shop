@@ -15,11 +15,12 @@ public class CatalogService {
         return catalogDao.getProductByName(name).get(0).getPrice();
     }
 
-    public Catalog getItem() {
-        Catalog catalogItem = new Catalog();
-        for (Catalog item : catalogDao.getItemFromCatalog()) {
-           catalogItem = item;
-        }
-        return catalogItem;
+    public Catalog getItemFromCatalog() {
+//        Catalog catalogItem = new Catalog();
+//        for (Catalog item : catalogDao.getCatalog()) {
+//           catalogItem = item;
+//        }
+//        return catalogItem;
+        return catalogDao.getCatalog().get(0);
     }
 }

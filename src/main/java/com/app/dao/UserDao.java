@@ -15,21 +15,21 @@ import java.util.List;
 public class UserDao {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate2;
 
     public void storeUser(Registration reg) throws NullPointerException {
-        jdbcTemplate.update("INSERT INTO users (username, password, first_name, last_name, email, phone, birth_date, city_id, card_nr) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        jdbcTemplate2.update("INSERT INTO users (username, password, first_name, last_name, email, phone, birth_date, city_id, card_nr) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 reg.getUsername(), reg.getPassword(), reg.getFirstName(), reg.getLastName(), reg.getEmail(), reg.getPhone(), reg.getBirthDate(), reg.getCityId(), reg.getCardNr());
     }
 
     public List<User> getUsers() {
         RowMapper<User> rowMapper = (resultSet, rowNumber) -> mapUser(resultSet); //Lambda
-        return jdbcTemplate.query("SELECT * FROM users", rowMapper);
+        return jdbcTemplate2.query("SELECT * FROM users", rowMapper);
     }
 
     public List<User> getUserByUsername(String username) {
         RowMapper<User> rowMapper = (resultSet, rowNumber) -> mapUser(resultSet);
-        return jdbcTemplate.query("SELECT * FROM users WHERE username = ?", rowMapper, username);
+        return jdbcTemplate2.query("SELECT * FROM users WHERE username = ?", rowMapper, username);
     }
 
     private User mapUser(ResultSet resultSet) throws SQLException {
