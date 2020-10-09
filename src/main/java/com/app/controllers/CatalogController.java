@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.List;
+
 @Controller
 public class CatalogController {
 
@@ -16,8 +18,8 @@ public class CatalogController {
 
     @GetMapping("/catalog")
     public String getItem(@ModelAttribute Catalog catalog, Model model) {
-        model.addAttribute("catalog" , catalog);
-        catalogService.getItemFromCatalog();
+        List<Catalog> catalogList = catalogService.getCatalogList();
+        model.addAttribute("catalog" , catalogList);
         return "catalog";
 
     }

@@ -5,6 +5,8 @@ import com.app.model.Catalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CatalogService {
 
@@ -15,12 +17,7 @@ public class CatalogService {
         return catalogDao.getProductByName(name).get(0).getPrice();
     }
 
-    public Catalog getItemFromCatalog() {
-//        Catalog catalogItem = new Catalog();
-//        for (Catalog item : catalogDao.getCatalog()) {
-//           catalogItem = item;
-//        }
-//        return catalogItem;
-        return catalogDao.getCatalog().get(0);
+    public List<Catalog> getCatalogList() {
+        return catalogDao.getCatalog();
     }
 }
