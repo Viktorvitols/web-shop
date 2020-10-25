@@ -3,6 +3,18 @@
 <head>
     <title>Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
+  } );
+  </script>
+
 </head>
 <body>
 <h1>Form</h1>
@@ -13,7 +25,16 @@
     <p>Last name: <input required type="text" th:field="*{lastName}"/></p>
     <p>Email: <input required type="text" th:field="*{email}"/></p>
     <p>Phone number: <input required type="text" th:field="*{phone}"/></p>
-    <p>Birth date: <input required type="text" th:field="*{birthDate}"/></p>
+    <!--    <p>Birth date: <input required type="text" th:field="*{birthDate}"/></p>-->
+    <p>Birth Date: <input required type="text" id="datepicker" size="30" th:field="*{birthDate}" autocomplete="off"></p>
+
+    <p>Format options:<br>
+        <select id="format">
+            <option value="mm/dd/yy">Default - mm/dd/yy</option>
+            <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        </select>
+    </p>
+
     <label for="cityId">City</label>
     <select required th:field="*{cityId}" id="cityId">
         <option th:value="1" th:text="Riga"></option>

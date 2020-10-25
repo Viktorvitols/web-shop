@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 @Controller
@@ -38,6 +39,14 @@ public class LoginController {
             currentUser.setId(userId);
             model.addAttribute("id", userId);
 //            return "login_response";
+        }
+        return "redirect:/login";
+    }
+
+    @GetMapping("/logout")
+    public String logoutUser(HttpSession session) {
+        if (currentUser.getId() != null) {
+            session.invalidate();
         }
         return "redirect:/login";
     }
