@@ -1,6 +1,7 @@
 package com.app.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Registration {
     private String username;
@@ -9,7 +10,7 @@ public class Registration {
     private String lastName;
     private String email;
     private String phone;
-    private java.sql.Date birthDate;
+    private LocalDate birthDate;
     private int cityId;
     private String cardNr;
 
@@ -61,12 +62,13 @@ public class Registration {
         this.phone = phone;
     }
 
-    public java.sql.Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(String birthDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        this.birthDate = LocalDate.parse(birthDate, formatter);
     }
 
     public int getCityId() {

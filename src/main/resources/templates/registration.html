@@ -26,14 +26,14 @@
     <p>Email: <input required type="text" th:field="*{email}"/></p>
     <p>Phone number: <input required type="text" th:field="*{phone}"/></p>
     <!--    <p>Birth date: <input required type="text" th:field="*{birthDate}"/></p>-->
-    <p>Birth Date: <input required type="text" id="datepicker" size="30" th:field="*{birthDate}" autocomplete="off"></p>
+    <p>Birth Date: <input required type="text" id="datepicker" size="30" th:field="*{birthDate}" autocomplete="off" /></p>
 
-    <p>Format options:<br>
-        <select id="format">
-            <option value="mm/dd/yy">Default - mm/dd/yy</option>
-            <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
-        </select>
-    </p>
+<!--    <p>Format options:<br>-->
+<!--        <select id="format">-->
+<!--            <option value="mm/dd/yy">Default - mm/dd/yy</option>-->
+<!--            <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>-->
+<!--        </select>-->
+<!--    </p>-->
 
     <label for="cityId">City</label>
     <select required th:field="*{cityId}" id="cityId">
