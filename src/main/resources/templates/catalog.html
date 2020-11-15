@@ -7,25 +7,34 @@
     <link th:href="@{css/main.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="items">
-    <th:block th:each="item : ${catalog}">
-        <div class="item">
-            <div>
-                <div class="header">
-                    <div class="typeLink" th:text="${item.categoryName}"></div>
-                    <div class="typeTxt">></div>
-                    <div class="typeLink" th:text="${item.subcategoryName}"></div>
-                </div>
-                <div><img class="img" th:src="@{img/noImg.jpg}"></div>
-                <div class="name" th:text="${item.name}"></div>
-                <div class="description" th:text="${item.description}"></div>
-            </div>
-            <div>
-                <div class="price" th:text="${item.price} + ' €'"></div>
-                <div class="buyBtn">Buy</div>
-            </div>
+<div class="container">
+    <div class="toolbar">
+        <div class="login">
+            <button class="loginBtn">
+                Login
+            </button>
         </div>
-    </th:block>
+    </div>
+    <div class="items">
+        <th:block th:each="item : ${catalog}">
+            <div class="item">
+                <div>
+                    <div class="header">
+                        <div class="typeLink" th:text="${item.categoryName}"></div>
+                        <div class="typeTxt">></div>
+                        <div class="typeLink" th:text="${item.subcategoryName}"></div>
+                    </div>
+                    <div><img class="img" th:src="@{img/noImg.jpg}"></div>
+                    <div class="name" th:text="${item.name}"></div>
+                    <div class="description" th:text="${item.description}"></div>
+                </div>
+                <div>
+                    <div class="price" th:text="${item.price} + ' €'"></div>
+                    <div class="buyBtn">Buy</div>
+                </div>
+            </div>
+        </th:block>
+    </div>
 </div>
 </body>
 </html>
