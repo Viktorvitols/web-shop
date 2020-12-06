@@ -26,7 +26,8 @@ public class LoginController {
     public String getLoginForm(Model model) {
         if (currentUser.getId() != null) {
             model.addAttribute("id", currentUser.getId());
-            return "login_response";
+            model.addAttribute("username", currentUser.getName());
+            return "redirect:/catalog";
         }
         model.addAttribute("login", new Login());
         return "login";
@@ -35,10 +36,13 @@ public class LoginController {
     @PostMapping("/login")
     public String loginUser(@ModelAttribute Login login, Model model) throws SQLException {
         Integer userId = loginService.getUserId(login);
+        String username = loginService.getUsername(login);
         if (userId != null) {
             currentUser.setId(userId);
+            currentUser.setName(login.getUsername());
             model.addAttribute("id", userId);
-//            return "login_response";
+            model.addAttribute("username", username);
+            return "redirect:/catalog";
         }
         return "redirect:/login";
     }

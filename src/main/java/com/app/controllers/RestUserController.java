@@ -2,6 +2,7 @@ package com.app.controllers;
 
 import com.app.model.User;
 import com.app.services.UserService;
+import com.app.session.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,18 @@ public class RestUserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private CurrentUser currentUser;
+
     @CrossOrigin
     @GetMapping("/getUsers")
     public List<User> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @CrossOrigin
+    @GetMapping("/getUsername")
+    public String getUsername() {
+        return currentUser.getName();
     }
 }

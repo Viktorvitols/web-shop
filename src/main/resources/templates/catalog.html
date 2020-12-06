@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Home Work :: Catalog</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,10 +9,14 @@
 <body>
 <div class="container">
     <div class="toolbar">
+        <p th:object="${catalog}" th:text="'I am ' + ${username}"/>
         <div class="login">
-            <button class="loginBtn">
-                Login
-            </button>
+            <form action="#" th:action="@{/login}" method="get">
+                <p><input type="submit" value="Login" class="loginBtn"/></p>
+            </form>
+            <form action="#" th:action="@{/logout}" method="get">
+                <p><input type="submit" value="Logout" class="loginBtn"/></p>
+            </form>
         </div>
     </div>
     <div class="items">

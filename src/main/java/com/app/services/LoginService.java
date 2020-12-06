@@ -32,4 +32,10 @@ public class LoginService {
         }
             return null;
     }
+
+    public String getUsername(Login login) throws SQLException {
+        List<User> users = userDao.getUserByUsername(login.getUsername());
+        return users.get(0).getUsername();
+
+    }
 }
