@@ -2,6 +2,7 @@ package com.app.dao;
 
 import com.app.model.Catalog;
 import com.app.model.CatalogItem;
+import com.app.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -26,6 +27,16 @@ public class CatalogDao {
                 "INNER JOIN types ON sub_types.type_id = types.id", rowMapper);
     }
 
+    public List<Category> getCategories() {
+        RowMapper<Category> rowMapper = (rs, rowNumber) -> mapCategoryItem(rs);
+        return jdbcTemplate.query("SELECT * FROM types", rowMapper);
+    }
+
+    public List<Category> getSubCategories(int id) {
+        RowMapper<Category> rowMapper = (rs, rowNumber) -> mapCategoryItem(rs);
+        return jdbcTemplate.query("SELECT * FROM sub_types WHERE type_id = ?", rowMapper, id);
+    }
+
     private CatalogItem mapCatalogItem(ResultSet rs) throws SQLException {
         CatalogItem item = new CatalogItem();
 
@@ -42,6 +53,9 @@ public class CatalogDao {
     }
 
 
+    private Category mapCategoryItem(ResultSet rs) throws SQLException {
+        return new Category(rs.getInt("id"), rs.getString("name"));
+    }
 
 
 
