@@ -65,7 +65,7 @@ public class LoginController {
         return "redirect:/login";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/logout_old")
     public String logoutUser(HttpSession session) {
         if (currentUser.getId() != null) {
             session.invalidate();
