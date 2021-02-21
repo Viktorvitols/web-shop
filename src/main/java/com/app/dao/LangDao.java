@@ -13,7 +13,7 @@ public class LangDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public HashMap<String, String> getTranslations(int langId, String page) {
+    public HashMap<String, String> getTranslations(Integer langId, String page) {
         return jdbcTemplate.query("SELECT label, translation FROM translations WHERE lang_id = ? " +
                         "AND (page = ? OR page = 'all')",
                 (ResultSet rs) -> {

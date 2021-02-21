@@ -12,7 +12,7 @@ public class LangService {
     @Autowired
     private LangDao langDao;
 
-    public HashMap<String, String> getTranslations(int langId, String page) {
+    public HashMap<String, String> getTranslations(Integer langId, String page) {
         return langDao.getTranslations(langId, page);
     }
 }

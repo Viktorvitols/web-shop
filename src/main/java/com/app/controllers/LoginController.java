@@ -36,19 +36,20 @@ public class LoginController {
     }
 
     @GetMapping("/translations")
-    public String getTranslationsPage(Model model) {
-        if (currentUser.getLangId() == null) {
-            currentUser.setLangId(1);
+    public String getTranslationsPage(Model model, HttpSession session) {
+        if (session.getAttribute("lang") == null) {
+            session.setAttribute("lang",1);
         }
-        model.addAttribute("lang", langService.getTranslations(currentUser.getLangId(), "homepage"));
+        model.addAttribute("lang", langService.getTranslations((int) session.getAttribute("lang"), "homepage"));
 
         return "translations";
     }
 
     @GetMapping("/setLang/{langId}")
     @ResponseBody
-    public void setLang(@PathVariable(value = "langId") Integer langId) {
-        currentUser.setLangId(langId);
+    public void setLang(@PathVariable(value = "langId") Integer langId, HttpSession session) {
+//        currentUser.setLangId(langId); -->> переделали на Spring security
+        session.setAttribute("lang", langId);
     }
 
     @PostMapping("/login")
